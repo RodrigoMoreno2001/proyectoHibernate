@@ -75,4 +75,19 @@ public class AnimalDAO implements IAnimalDAO {
         }
         return animales;
     }
+
+    @Override
+    public Set<Animal> mostrarAnimalesAdoptados() {
+        Set<Animal> animales = null;
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            animales = new HashSet<>(session.createQuery("from Animal where familia is not null", Animal.class).getResultList());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return animales;
+    }
+
 }

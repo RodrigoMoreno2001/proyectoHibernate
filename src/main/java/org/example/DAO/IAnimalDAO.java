@@ -10,4 +10,5 @@ public interface IAnimalDAO {
     void borrarAnimal(Animal animal);
     Set<Animal> mostrarAnimales();
     Set<Animal> mostrarAnimalesPorEspecie(String especie);
+    Set<Animal> mostrarAnimalesAdoptados();
 }
