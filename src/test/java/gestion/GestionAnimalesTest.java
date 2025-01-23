@@ -1,5 +1,6 @@
 package gestion;
 
+import org.example.entities.Animal;
 import org.example.gestion.GestionAnimales;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GestionAnimalesTest {
 
-
+    /*
+    * LOS TEST SE DEBEN EJECUTAR DE UNO EN UNO
+    * PARA EVITAR "NoSuchElementException"
+    */
 
     @Test
     void elegirEspecie() {
@@ -41,7 +45,7 @@ class GestionAnimalesTest {
 
         String inputSimulado = "1\n4\n2\n";
         InputStream streamOriginal= System.in;
-        System.setIn(new ByteArrayInputStream(inputSimulado.getBytes())); // Redirigimos System.in
+        System.setIn(new ByteArrayInputStream(inputSimulado.getBytes()));
 
         // Verificamos que el estado seleccionado sea el correcto
         assertEquals("Recién abandonado", GestionAnimales.seleccionarEstado());
@@ -50,11 +54,15 @@ class GestionAnimalesTest {
         System.setIn(streamOriginal);
     }
 
-
     @Test
     void instanciarNuevoAnimal() {
+        String inputSimulado = "rodri\n2\n20\nno\n1\n";
+        InputStream streamOriginal = System.in;
 
-        String inputSimulado = "rodri\n2\n20\nno\n1";
-
+        System.setIn(new ByteArrayInputStream(inputSimulado.getBytes()));
+        Animal instanciado = GestionAnimales.instanciarNuevoAnimal();
+        Animal esperado = new Animal(null, "rodri", "2", 20, "no", "Recién abandonado", null);
+        assertEquals(esperado,instanciado);
+        System.setIn(streamOriginal);
     }
 }
