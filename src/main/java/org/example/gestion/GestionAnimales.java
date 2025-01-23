@@ -125,14 +125,14 @@ public class GestionAnimales {
      * @return La especie seleccionada.
      */
 
-    private static String elegirEspecie() {
+    public static String elegirEspecie() {
         String[] especies ={"Perro","Gato","Pájaro","Cerdo vietnamita","Serpiente","Camaleon","araña"};
 
         int especieSeleccionada = 0;
 
         while(especieSeleccionada<=0 || especieSeleccionada>especies.length){
 
-            System.out.println("Introduce la familia del animal: ");
+            System.out.println("Introduce la especie del animal: ");
 
             for(int i=0;i<especies.length;i++){
                 System.out.println((i+1)+".- "+especies[i]);
@@ -151,6 +151,9 @@ public class GestionAnimales {
      */
 
     public static Animal instanciarNuevoAnimal(){
+
+
+
         System.out.println("Introduce el nombre del animal: ");
         String nombre = Teclado.nextLine();
         String especie = elegirEspecie();
