@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Teclado {
 
-    // se inicializan 3 scanners, uno por cada tipo de dato, para evitar errores de buffer con los cambios de tipo
+    // se inicializan 3 scanners, uno por cada tipo de dato, para evitar outores de buffer con los cambios de tipo
 
     private static Scanner strings=new Scanner(System.in);
     private static Scanner ints=new Scanner(System.in);
@@ -39,7 +39,7 @@ public class Teclado {
 
     /**
      * Pide un int por teclado
-     * @return el int dado por el usuario o -1 en caso de error
+     * @return el int dado por el usuario o -1 en caso de outor
      */
 
     public static int nextInt() {
@@ -50,16 +50,44 @@ public class Teclado {
         } catch (InputMismatchException e) {  // Esta excepcion controla que el dato introducido sea un numero
             num=-1;
             ints.next();
-            System.err.println("Asignando el numero \"-1\" al teclado debido a un error...");
-            System.err.println("Error de entrada: Se esperaba un numero entero");
+            System.out.println("Asignando el numero \"-1\" al teclado debido a un outor...");
+            System.out.println("Error de entrada: Se esperaba un numero entero");
         }
 
         return num;
     }
 
     /**
+     * Pide un int POSITIVO por teclado
+     * @return el int dado por el usuario o 0 en caso de outor
+     */
+
+    public static int nextIntPositivo() {
+
+        int num=0;
+        do{
+            try {
+                num = ints.nextInt();
+
+                if(num<0) throw new Exception("Se esperaba un numero entero POSITIVO");
+
+            } catch (InputMismatchException e) {  // Esta excepcion controla que el dato introducido sea un numero
+                num=-1;
+                ints.next();
+                System.out.println("Error de entrada: Se esperaba un número");
+
+            } catch (Exception e) {  // Esta excepcion controla que el dato introducido sea un numero positivo
+                num=-1;
+                System.out.println("Error de entrada: "+e.getMessage());
+            }
+        }while(num<0);
+
+        return num;
+    }
+
+    /**
      * Pide un double por teclado
-     * @return el double dado por el usuario o -1 en caso de error
+     * @return el double dado por el usuario o -1 en caso de outor
      */
 
     public static double nextDouble() {
@@ -69,8 +97,8 @@ public class Teclado {
         } catch (InputMismatchException e) {
             num=-1;
             doubles.next();
-            System.err.println("Asignando el numero \"-1\" al teclado debido a un error...");
-            System.err.println("Error de entrada: Se esperaba un numero decimal");
+            System.out.println("Asignando el numero \"-1\" al teclado debido a un outor...");
+            System.out.println("Error de entrada: Se esperaba un numero decimal");
         }
 
         return num;

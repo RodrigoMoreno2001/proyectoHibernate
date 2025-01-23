@@ -4,17 +4,17 @@ import org.example.DAO.FamiliaDAO;
 import org.example.entities.Familia;
 
 import java.util.ArrayList;
-
+/**
+ * Clase encargada de gestionar las operaciones relacionadas con las familias en el sistema.
+ * Ofrece funcionalidades para crear, eliminar y visualizar familias.
+ */
 public class GestionFamilias {
-
+    /**
+     * Muestra el menú de gestión de familias y maneja las opciones seleccionadas por el usuario.
+     * Las opciones permiten agregar una nueva familia, eliminar una familia o mostrar todas las familias.
+     */
     public static void menuFamilias(){
         FamiliaDAO familiaDAO=new FamiliaDAO();
-        /*
-        System.out.println("1. Nueva familia");
-        System.out.println("2. Eliminar familia");
-        System.out.println("3. Mostrar familias");
-        System.out.println("0. Volver atrás");
-        */
         int opcion=0;
 
         do{
@@ -31,6 +31,7 @@ public class GestionFamilias {
                     GestionGeneral.imprimirListas(familiaDAO.mostrarFamilias());
                     break;
                 case 0:
+                    System.out.println("Volviendo...");
                     break;
                 default:
                     System.out.println("Opcion incorrecta");
@@ -39,16 +40,28 @@ public class GestionFamilias {
         }while(opcion!=0);
     }
 
+    /**
+     * Crea una nueva familia solicitando al usuario información como el nombre, edad y ciudad.
+     *
+     * @return El nuevo objeto Familia instanciado.
+     */
+
     public static Familia instanciarNuevaFamilia(){
         System.out.println("Introduce el nombre de la familia: ");
         String nombre = Teclado.nextLine();
         System.out.println("Introduce la edad de la familia: ");
-        Integer edad = Teclado.nextInt();
+        Integer edad = Teclado.nextIntPositivo();
         System.out.println("Introduce la ciudad de la familia: ");
         String ciudad = Teclado.nextLine();
 
         return new Familia(null,nombre,edad,ciudad);
     }
+
+    /**
+     * Permite seleccionar una familia de la lista de familias existentes.
+     *
+     * @return La familia seleccionada o null si no se seleccionó una familia válida.
+     */
 
     public static Familia seleccionarFamilia(){
 
