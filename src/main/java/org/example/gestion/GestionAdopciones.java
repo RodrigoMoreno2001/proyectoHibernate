@@ -1,41 +1,36 @@
 package org.example.gestion;
-import java.util.Collection;
 
-public class GestionGeneral {
-    public static void menuPrincipal(){
+public class GestionAdopciones {
+
+    public static void menuAdopciones(){
 
         int opcion=0;
 
         do{
-            Menus.menuPrincipal();
-
+            Menus.menuAdopciones();
             opcion = Teclado.nextInt();
-
             switch (opcion){
                 case 1:
-                    GestionAnimales.menuAnimales();
+
                     break;
                 case 2:
-                    GestionFamilias.menuFamilias();
+
                     break;
                 case 3:
-                    GestionAdopciones.menuAdopciones();
+
+                    break;
+                case 4:
+
                     break;
                 case 0:
-                    System.exit(0);
+
                     break;
                 default:
                     System.out.println("Opcion incorrecta");
                     break;
             }
 
-        }while(true);
-
+        }while(opcion!=0);
     }
 
-    public static void imprimirListas(Collection lista){
-
-        for(var aux:lista) System.out.println(aux);
-
-    }
 }
