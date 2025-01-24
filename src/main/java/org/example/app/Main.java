@@ -19,6 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Llama al menú principal de la clase GestionGeneral
+
         GestionGeneral.menuPrincipal();
     }
 }

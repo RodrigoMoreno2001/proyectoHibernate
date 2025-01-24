@@ -78,7 +78,7 @@ public class Teclado {
 
             } catch (Exception e) {  // Esta excepcion controla que el dato introducido sea un numero positivo
                 num=-1;
-                System.out.println("Error de entrada: "+e.getMessage());
+                e.printStackTrace();
             }
         }while(num<0);
 

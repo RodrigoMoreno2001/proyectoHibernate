@@ -1,0 +1,17 @@
+CREATE TABLE Familia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    edad INT,
+    ciudad VARCHAR(255)
+);
+
+CREATE TABLE Animal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    especie VARCHAR(255),
+    edad INT,
+    descripcion TEXT,
+    estado VARCHAR(255),
+    familia_id INT,
+    CONSTRAINT fk_familia FOREIGN KEY (familia_id) REFERENCES Familia(id)
+);
